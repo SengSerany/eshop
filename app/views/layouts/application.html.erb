@@ -17,14 +17,14 @@
 
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Lemoon</a>
+  <a class="navbar-brand" href="<%= root_path %>">Lemoon</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Acceuil<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<%= root_path %>">Acceuil<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"></a>
@@ -37,6 +37,10 @@
     <span class="navbar-text nav-link">
     <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
     </span>
+    <span class="navbar-text nav-link">
+
+    <%= link_to(image_tag("cart.svg"), cart_path(@cart.id)) %>
+    </span>
     <% else %>
     <span class="navbar-text nav-link">
     <%= link_to "Sign in", new_user_session_path %>
@@ -45,9 +49,6 @@
     <%= link_to "Sign up", new_user_registration_path %>
     </span>
     <% end %>
-    <span class="navbar-text nav-link">
-    <%= image_tag "cart.svg" %>
-    </span>
   </div>
 </nav>
     <%= yield %>
