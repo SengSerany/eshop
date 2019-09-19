@@ -16,9 +16,9 @@
 
 	    	<% if current_user != nil %>
 	    		<% if current_user.is_admin == true %>
-	   				<div class="col"> <%= button_to "Supprimer", item_path(item), method: :delete, data: { confirm: "êtes-vous sur?" },class: "card-link"%> </div>
+	   				<div class="col"> <%= button_to "Supprimer", item_path(item), method: :delete, data: { confirm: "êtes-vous sur?" }, class: "card-link"%> </div>
 	   				<% else %>
-	   				
+	   				<%= button_to "Ajouter au panier", cart_items_path(item.id), class: "card-link"%>
 	   			<% end %>
 	   		<% end %>
 
