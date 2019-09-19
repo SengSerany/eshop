@@ -20,6 +20,11 @@
 	<%= @account.city %></p>
 	<% end %>
 	<br/>
+
+	<% if @account.first_name != nil && @account.last_name != nil && @account.street != nil &&  @account.zipcode != nil && @account.city != nil %>
+		<%= link_to "Valider votre commande", new_order_path, class: "btn btn-primary" %><br/><br/>
+	<% end %>
+
 	<%= link_to "Modifier mes informations", edit_account_path %><br/>
 	<%= link_to "Actualiser mon email / mot de passe", edit_user_registration_path %>
 </div>

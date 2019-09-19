@@ -1,0 +1,26 @@
+<div class="container"><br/><br/>
+	<div class="row">
+		<div class="col"><h1>Ma commande</h1></div>
+			</div><br/>
+		<div class="row">
+			<div class="col"><h3>Articles</h3></div>
+		</div>
+
+			<% total_price = 0 %>
+			<% @inMyCart.each do |item| %>
+		
+		<div class="row">
+			<div class="col"><h5><%= item.name %></h5></div>
+			<div class="col"><p>Prix: <%= item.price %>€</p></div>
+				<% quantity = CartItem.find_by(cart_id: @cart.id, item_id: item.id).quantity %>
+			<div class="col"><p>Quantité: <%= quantity %></p></div>
+			<div class="col"><p>Total produit: <%= item.price * quantity %>€</p></div>
+		</div>
+			<% end %>
+	</div>
+			
+
+</div>
+
+	
+
