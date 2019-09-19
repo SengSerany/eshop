@@ -35,10 +35,12 @@
     </ul>
     <% if user_signed_in? %>
     <span class="navbar-text nav-link">
+    <%= link_to "Mon profil", account_path(@account.id) %>
+    </span>
+    <span class="navbar-text nav-link">
     <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
     </span>
     <span class="navbar-text nav-link">
-
     <%= link_to(image_tag("cart.svg"), cart_path(@cart.id)) %>
     </span>
     <% else %>
