@@ -4,11 +4,18 @@
 		<br/><br/>
 
 
+	<% total_price = 0 %>
 	<% @inMyCart.each do |item| %>
 	<p>
 		<%= item.name %><br/>
-		Prix : <%= item.price %>€
-	</p>
+		Prix : <%= item.price %>€ <br/>
 
+		<% quantity = CartItem.find_by(cart_id: @cart.id, item_id: item.id).quantity %>
+		Quantité : <%= quantity %>
+		<% total_price = total_price + (item.price * quantity) %>
+	</p>
 	<% end %>
+	<br/>
+	<h3 class="text-right"> Prix total :</h3>
+	<p class="text-right"> <%= total_price %>€ </p>
 </div>

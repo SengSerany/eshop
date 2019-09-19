@@ -1,10 +1,8 @@
 class CartItemsController < ApplicationController
   def create
-  	@cart_item = CartItem.new(item_id: params[:format], cart_id: @cart.id)
-  	if @cart_item.save
-  		flash[:success] = "Le produit a bien été ajouté à votre panier"
-  		redirect_to root_path
-  	end
+    @cart_item = @cart.add_or_create_cart_item_link(params, @cart)
+  	flash[:success] = "Le produit a bien été ajouté à votre panier"
+  	redirect_to root_path
   end
 
   def update

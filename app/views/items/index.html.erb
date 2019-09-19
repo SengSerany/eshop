@@ -4,26 +4,33 @@
 	<br/><br/>
 
 	<h3>Les nouveautés :</h3><br/>
+	
+
+	<div class="row">
+
 	<% @items.each do |item| %>
-	<div class="card" style="width: 18rem;">
-	  <div class="card-body">
-	    <h5 class="card-title"><%= item.name %></h5>
-	    <p class="card-text"><%= item.description %></p>
-	    <p class="card-link">Prix: <%= item.price %>€</p>
+		<div class="col-4">
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title"><%= item.name %></h5>
+			    <p class="card-text"><%= item.description %></p>
+			    <p class="card-link">Prix: <%= item.price %>€</p>
 
-	    <div class="row">
-	    	<div class="col"> <%= link_to "Plus d'infos", item_path(item), class: "card-link" %> </div>
+			    <div class="row">
+			    	<div class="col"> <%= link_to "Plus d'infos", item_path(item), class: "card-link" %> </div>
 
-	    	<% if current_user != nil %>
-	    		<% if current_user.is_admin == true %>
-	   				<div class="col"> <%= button_to "Supprimer", item_path(item), method: :delete, data: { confirm: "êtes-vous sur?" }, class: "card-link"%> </div>
-	   				<% else %>
-	   				<%= button_to "Ajouter au panier", cart_items_path(item.id), class: "card-link"%>
-	   			<% end %>
-	   		<% end %>
+			    	<% if current_user != nil %>
+			    		<% if current_user.is_admin == true %>
+			   				<div class="col"> <%= button_to "Supprimer", item_path(item), method: :delete, data: { confirm: "êtes-vous sur?" }, class: "card-link"%> </div>
+			   				<% else %>
+			   				<%= button_to "Ajouter au panier", cart_items_path(item.id), class: "card-link"%>
+			   			<% end %>
+			   		<% end %>
 
-	   	</div>
-	  </div>
-	</div>
+			   	</div>
+			  </div>
+			</div>
+		</div>
 	<% end %>
+	</div>
 </div>
