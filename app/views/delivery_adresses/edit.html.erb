@@ -1,2 +1,25 @@
-<h1>DeliveryAdresses#edit</h1>
-<p>Find me in app/views/delivery_adresses/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%= form_for @delivery_adress do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Modifier mon adresse de livraison</h1><br/>
+        <div class="form-group">
+          <%= f.label :street, "Rue" %>
+          <%= f.text_field :street, autocomplete: "street", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :zipcode, "Code postal" %>
+          <%= f.number_field :zipcode, autocomplete: "zipcode", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :city, "Ville" %>
+          <%= f.text_field :city, autocomplete: "city", class: "form-control" %>
+        </div>
+        <div class="actions mt-5">
+          <%= f.submit "Modifier", class: "btn btn-lg btn-primary btn-block" %><br/><br/><br/>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

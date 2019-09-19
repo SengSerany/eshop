@@ -1,5 +1,7 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
+   before_action :can_see_only_my_profil
+
   def show
   end
 
@@ -25,5 +27,11 @@ class AccountsController < ApplicationController
 
   def set_account
     @account = Account.find(params[:id])
+  end
+
+  def can_see_only_my_profil
+    if @account.id != params[:id].to_i
+      redirect_to root_path
+    end
   end
 end

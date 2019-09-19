@@ -14,17 +14,42 @@
 	<% if @account.street == nil || @account.zipcode == nil || @account.city == nil%>
 		<h3>Veuillez renseigner votre adresse <br/>avec le bouton "modifier mes informations" en bas de la page.</h3>
 	<% else %>
-	<h3>Adresse:</h3>
-	<p><%= @account.street %><br/>
-	<%= @account.zipcode %><br/>
-	<%= @account.city %></p>
+	<div class="row">
+		<div class="col">
+			<h3>Adresse principal:</h3>
+			<p><%= @account.street %><br/>
+			<%= @account.zipcode %><br/>
+			<%= @account.city %></p>
+		</div>
+	<% if DeliveryAdress.find_by(user_id: current_user.id) == nil%>
+		<div class="col">
+			<h3>Adresse de livraison:</h3>
+			<p><%= @account.street %><br/>
+			<%= @account.zipcode %><br/>
+			<%= @account.city %></p>
+		</div>
+	<% else %>
+		<div class="col">
+			<% @delivery_adress = DeliveryAdress.find_by(user_id: current_user.id) %>
+			<h3>Adresse de livraison:</h3>
+			<p><%= @delivery_adress.street %><br/>
+			<%= @delivery_adress.zipcode %><br/>
+			<%= @delivery_adress.city %></p>
+		</div>
 	<% end %>
+	</div>
 	<br/>
+	<% end %>
 
 	<% if @account.first_name != nil && @account.last_name != nil && @account.street != nil &&  @account.zipcode != nil && @account.city != nil %>
 		<%= link_to "Valider votre commande", new_order_path, class: "btn btn-primary" %><br/><br/>
 	<% end %>
 
-	<%= link_to "Modifier mes informations", edit_account_path %><br/>
+	<%= link_to "Modifier mon adresse principal", edit_account_path %><br/>
+	<% if DeliveryAdress.find_by(user_id: current_user.id) == nil%>
+	<%= link_to "Modifier mon adresse de livraison", new_delivery_adress_path %><br/>
+	<% else %>
+		<%= link_to "Modifier mon adresse de livraison", edit_delivery_adress_path %><br/>
+	<% end %>
 	<%= link_to "Actualiser mon email / mot de passe", edit_user_registration_path %>
 </div>
