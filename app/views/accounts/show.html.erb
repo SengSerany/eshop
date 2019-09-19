@@ -5,6 +5,10 @@
 	<h1><%= @account.first_name %> <%= @account.last_name %></h3>
 	<% end %>
 
+	<% if current_user.is_admin == true %>
+	<%= link_to "Ajouter un produit", new_item_path %><br/>
+	<% end %>
+	<br/>
 	<br/>
 
 	<% if @account.street == nil || @account.zipcode == nil || @account.city == nil%>
