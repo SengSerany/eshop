@@ -1,2 +1,8 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<br/>
+<div class="container">
+	<h1><%= @item.name %></h1>
+	<br/><br/><br/>
+	<h3>Description</h3>
+	<p><%= @item.description %></p><br/>
+	<p class="text-right">Prix: <%= @item.price %></p>
+</div>
