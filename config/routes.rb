@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :accounts, except: [:index, :new]
   resources :carts, except: [:index, :new, :edit]
   resources :items
+  resources :charges
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
