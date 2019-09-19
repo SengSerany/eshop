@@ -10,9 +10,12 @@
 		<%= item.name %><br/>
 		Prix : <%= item.price %>€ <br/>
 
+		<% cart_item = CartItem.find_by(cart_id: @cart.id, item_id: item.id) %>
 		<% quantity = CartItem.find_by(cart_id: @cart.id, item_id: item.id).quantity %>
 		Quantité : <%= quantity %>
 		<% total_price = total_price + (item.price * quantity) %>
+		<br/>
+		<%= link_to "Supprimer l'article du panier", cart_item_path(cart_item), method: :delete %>
 	</p>
 	<% end %>
 	<br/>

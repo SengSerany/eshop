@@ -3,7 +3,7 @@ class Cart < ApplicationRecord
 
   def add_or_create_cart_item_link(params, cart)
   	if CartItem.find_by(cart_id: cart.id, item_id: params[:format]) == nil
-  		@cart_item = CartItem.new(item_id: params[:format], cart_id: cart.id, quantity: 1)
+  		@cart_item = CartItem.create(item_id: params[:format], cart_id: cart.id, quantity: 1)
   	else
   		@cart_item = CartItem.find_by(cart_id: cart.id, item_id: params[:format])
   		@cart_item.update(quantity: @cart_item.quantity + 1)
