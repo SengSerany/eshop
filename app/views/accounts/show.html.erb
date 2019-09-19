@@ -1,2 +1,21 @@
-<h1>Accounts#show</h1>
-<p>Find me in app/views/accounts/show.html.erb</p>
+<div class="container"><br/>
+	<% if @account.first_name == nil || @account.last_name == nil %>
+	<h3>Veuillez renseigner votre nom et prénom <br/>avec le bouton "modifier mes informations" en bas de la page.</h3>
+	<% else %>
+	<h1><%= @account.first_name %> <%= @account.last_name %></h3>
+	<% end %>
+
+	<br/>
+
+	<% if @account.street == nil || @account.zipcode == nil || @account.city == nil%>
+		<h3>Veuillez renseigner votre adresse <br/>avec le bouton "modifier mes informations" en bas de la page.</h3>
+	<% else %>
+	<h3>Adresse:</h3>
+	<p><%= @account.street %><br/>
+	<%= @account.zipcode %><br/>
+	<%= @account.city %></p>
+	<% end %>
+	<br/>
+	<%= link_to "Modifier mes informations", edit_account_path %><br/>
+	<%= link_to "Actualiser mon email / mot de passe", edit_user_registration_path %>
+</div>

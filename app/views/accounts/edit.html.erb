@@ -1,2 +1,37 @@
 <h1>Accounts#edit</h1>
 <p>Find me in app/views/accounts/edit.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%= form_for @account do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Modifie tes informations</h1>
+        <div class="form-group">
+          <%= f.label :first_name, "Prénom" %><br />
+          <%= f.text_field :first_name, autocomplete: "first_name", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :last_name, "Nom" %><br />
+          <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
+        </div>
+        <h2 class="h3 mb-3 font-weight-normal text-center">Adresse</h2>
+        <div class="form-group">
+          <%= f.label :street, "Rue" %>
+          <%= f.text_field :street, autocomplete: "street", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :zipcode, "Code postal" %>
+          <%= f.number_field :zipcode, autocomplete: "zipcode", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :city, "Ville" %>
+          <%= f.text_field :city, autocomplete: "city", class: "form-control" %>
+        </div>
+        <div class="actions mt-5">
+          <%= f.submit "Modifier", class: "btn btn-lg btn-primary btn-block" %><br/><br/><br/>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
